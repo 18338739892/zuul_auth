@@ -28,7 +28,7 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
   public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
     clients
         .inMemory()
-        .withClient("zuul_server")
+        .withClient("api-gateway")
         .secret("secret")
         .scopes("WRIGTH", "read").autoApprove(true)
         .authorities("WRIGTH_READ", "WRIGTH_WRITE")
