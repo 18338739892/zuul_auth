@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: api-gateway
+server:
+  port: 5555
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:118.25.123.16}:${eureka.port:8761}/eureka/
+  instance:
+    prefer-ip-address: true
+zuul:
+  routes:
+    # 客户端名称,随意起，不重复
+    client-a:
+      path: /backendapi/**
+      serviceId: backend-service
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      access-token-uri: http://localhost:7777/uaa/oauth/token #令牌端点
+      user-authorization-uri: http://localhost:7777/uaa/oauth/authorize #授权端点
+      client-id: api-gateway #OAuth2客户端ID
+      client-secret: secret #OAuth2客户端密钥
+    resource:
+      jwt:
+        key-value: springcloud123 #使用对称加密方式，默认算法为HS256

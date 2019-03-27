@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: backend-service
+server:
+  port: 9999
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:118.25.123.16}:${eureka.port:8761}/eureka/
+  instance:
+    prefer-ip-address: true
